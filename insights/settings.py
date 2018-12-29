@@ -2,15 +2,12 @@ import os
 import environ
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-env = environ.Env(
-    DEBUG=(bool, False)
-)
-environ.Env.read_env(BASE_DIR + '/../.env')
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(BASE_DIR + '/.env')
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = []
-
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -55,22 +52,24 @@ DATABASES = {
     'default': env.db(),
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'
@@ -80,7 +79,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-
 # -----------------------------------------------------------------------------
 # meetup.com settings
 # -----------------------------------------------------------------------------
@@ -88,3 +86,7 @@ STATIC_URL = '/static/'
 MEETUP_OAUTH_CLIENT_ID = env('MEETUP_OAUTH_CLIENT_ID')
 MEETUP_OAUTH_CLIENT_SECRET = env('MEETUP_OAUTH_CLIENT_SECRET')
 
+# -----------------------------------------------------------------------------
+# S3 settings
+# -----------------------------------------------------------------------------
+S3_BUCKET = env('S3_BUCKET')

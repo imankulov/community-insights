@@ -1,6 +1,5 @@
 import requests
 from django.conf import settings
-from django.db import transaction
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
@@ -17,13 +16,15 @@ def start(request):
 
 def callback(request):
     code = request.GET['code']
-    resp = requests.post('https://secure.meetup.com/oauth2/access', data={
-        'client_id': settings.MEETUP_OAUTH_CLIENT_ID,
-        'client_secret': settings.MEETUP_OAUTH_CLIENT_SECRET,
-        'grant_type': 'authorization_code',
-        'redirect_uri': get_oauth_redirect(request),
-        'code': code,
-    })
+    resp = requests.post(
+        'https://secure.meetup.com/oauth2/access',
+        data={
+            'client_id': settings.MEETUP_OAUTH_CLIENT_ID,
+            'client_secret': settings.MEETUP_OAUTH_CLIENT_SECRET,
+            'grant_type': 'authorization_code',
+            'redirect_uri': get_oauth_redirect(request),
+            'code': code,
+        })
     if resp.status_code != 200:
         return HttpResponse(resp.content)
 

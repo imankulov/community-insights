@@ -1,0 +1,362 @@
+[
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Lisboa, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Porto, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Aveiro, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Beja, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Braga, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Bragan\u00e7a, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Castelo Branco, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Coimbra, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "\u00c9vora, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Faro, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Guarda, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Leiria, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Portalegre, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Santar\u00e9m, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Set\u00fabal, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Viana do Castelo, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Vila Real, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Viseu, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Funchal, Portugal"
+  }
+},
+{
+  "model": "meetup.meetuplocation",
+  "fields": {
+    "country": "PT",
+    "location": "Ponta Delgada, Portugal"
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Lisboa, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Porto, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Aveiro, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Beja, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Braga, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Bragan\u00e7a, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Castelo Branco, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Coimbra, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "\u00c9vora, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Faro, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Guarda, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Leiria, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Portalegre, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Santar\u00e9m, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Set\u00fabal, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Viana do Castelo, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Vila Real, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Viseu, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Ponta Delgada, Portugal"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "meetup.meetupgroupfilter",
+  "fields": {
+    "category": 34,
+    "location": [
+      "PT",
+      "Funchal, Portugal"
+    ],
+    "active": true
+  }
+}
+]
