@@ -80,8 +80,8 @@ class MeetupCategory(models.Model):
     Meetup category. The id of meetup.com is directly mapped to the id of the
     object. Can be populated with "manage.py sync_categories"
     """
-    shortname = models.CharField(unique=True, max_length=1000)
-    name = models.CharField(unique=True, max_length=1000)
+    shortname = models.CharField(max_length=1000)
+    name = models.CharField(max_length=1000)
 
     @classmethod
     def from_api(cls, obj: APICategory):
@@ -113,8 +113,8 @@ class MeetupLocation(models.Model):
     """
     objects = MeetupLocationManager()
 
-    country = models.CharField(max_length=10)
-    location = models.CharField(max_length=1000)
+    country = models.CharField(max_length=4)
+    location = models.CharField(max_length=100)
 
     def natural_key(self):
         return self.country, self.location
@@ -182,7 +182,7 @@ class MeetupGroup(models.Model):
 
     name = models.CharField(max_length=1000)
     status = models.CharField(max_length=1000)
-    urlname = models.CharField(max_length=200, db_index=True)
+    urlname = models.CharField(max_length=100, db_index=True)
     description = models.TextField()
     created = models.DateTimeField()
     city = models.CharField(max_length=1000)
@@ -190,7 +190,7 @@ class MeetupGroup(models.Model):
     country = models.CharField(max_length=1000)
     state = models.CharField(max_length=1000)
     join_mode = models.CharField(max_length=1000)
-    visibility = models.CharField(max_length=1000)
+    visibility = models.CharField(max_length=50)
     lat = models.FloatField(max_length=1000)
     lon = models.FloatField(max_length=1000)
     members = models.PositiveIntegerField()

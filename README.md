@@ -15,13 +15,20 @@ requisites in the code. See [boto3 configuration guide](https://boto3.amazonaws.
 for details.
 
 Create a new S3 bucket to store snapshots for groups and their members
+
+Run a local MySQL server, you can start it using docker-compose.yml with 
+
+```bash
+docker-compose up
+```
  
 Copy `env.sample` to `.env` and adjust it accordingly, but setting the name for
-S3 bucket and meetup API client credentials.
+S3 bucket, meetup API client credentials and database URL if needed
 
 Migrate the database and create a new superuser
 
 ```bash
+./manage.py create_db
 ./manage.py migrate
 ./manage.py createsuperuser
 ```

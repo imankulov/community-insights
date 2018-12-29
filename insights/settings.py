@@ -7,7 +7,7 @@ environ.Env.read_env(BASE_DIR + '/.env')
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [env('ALLOWED_HOST')]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'core',
     'meetup',
 ]
 
@@ -50,6 +51,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'insights.wsgi.application'
 DATABASES = {
     'default': env.db(),
+}
+DATABASES['default']['OPTIONS'] = {
+    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
 }
 
 AUTH_PASSWORD_VALIDATORS = [

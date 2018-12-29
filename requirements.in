@@ -4,9 +4,11 @@ requests
 boto3
 attrs
 dpath
-ipython
-jupyter
-pandas
-matplotlib
-pyyaml
+zappa
+#ipython
+#jupyter
+#pandas
+#matplotlib
+#pyyaml
 tqdm
+mysqlclient

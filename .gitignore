@@ -39,3 +39,6 @@ venv.bak/
 
 # Local database
 /*.db
+
+# MySQL files
+/mysql
