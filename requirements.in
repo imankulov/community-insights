@@ -12,3 +12,4 @@ zappa
 #pyyaml
 tqdm
 mysqlclient
+whitenoise

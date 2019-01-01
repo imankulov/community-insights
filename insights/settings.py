@@ -1,15 +1,16 @@
-import os
 import environ
+import pathlib
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_DIR = pathlib.Path(__file__).absolute().parent.parent
 env = environ.Env(DEBUG=(bool, False))
-environ.Env.read_env(BASE_DIR + '/.env')
+environ.Env.read_env(str(BASE_DIR / '.env'))
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 ALLOWED_HOSTS = [env('ALLOWED_HOST')]
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -22,6 +23,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -81,6 +83,7 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 STATIC_URL = '/static/'
 
 # -----------------------------------------------------------------------------
