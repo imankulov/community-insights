@@ -13,7 +13,7 @@ class Command(BaseCommand):
         db_settings = settings.DATABASES['default']
         conn = MySQLdb.connect(
             host=db_settings['HOST'],
-            port=db_settings['PORT'],
+            port=db_settings['PORT'] or 3306,
             user=db_settings['USER'],
             passwd=db_settings['PASSWORD'])
         cur = conn.cursor()
