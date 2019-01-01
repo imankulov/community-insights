@@ -41,4 +41,4 @@ venv.bak/
 /*.db
 
 # MySQL files
-/mysql
+/dockerenv/mysql
