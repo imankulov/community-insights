@@ -14,11 +14,12 @@ decorator==4.3.0          # via ipython, traitlets
 django-environ==0.4.5
 django==2.1.4
 dpath==1.4.2
-google-api-core==1.7.0    # via google-cloud-core, google-cloud-storage
+google-api-core==1.7.0    # via google-cloud-bigquery, google-cloud-core, google-cloud-storage
 google-auth==1.6.2        # via google-api-core
-google-cloud-core==0.29.1  # via google-cloud-storage
+google-cloud-bigquery==1.8.1
+google-cloud-core==0.29.1  # via google-cloud-bigquery, google-cloud-storage
 google-cloud-storage==1.13.2
-google-resumable-media==0.3.2  # via google-cloud-storage
+google-resumable-media==0.3.2  # via google-cloud-bigquery, google-cloud-storage
 googleapis-common-protos==1.5.5  # via google-api-core
 gunicorn==19.9.0
 idna==2.8                 # via requests

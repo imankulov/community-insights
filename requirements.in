@@ -11,4 +11,7 @@ ipython
 #matplotlib
 tqdm
 whitenoise
+
+# Google Cloud libraries
 google-cloud-storage
+google-cloud-bigquery
