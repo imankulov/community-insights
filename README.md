@@ -10,11 +10,12 @@ a client is https://secure.meetup.com/meetup_api/oauth_consumers/.
 Use "http://127.0.0.1:8000/meetup/start/" is the value for the "Website"
 parameter and "http://127.0.0.1:8000/meetup/callback/" for "Redirect URI".
 
-Configure boto3 to make sure you have access to S3 bucket without providing
-requisites in the code. See [boto3 configuration guide](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html)
-for details.
+Create a new Google Cloud service account from the
+[Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts/create) tab
+with the "BigQuery Admin" and "Cloud SQL Admin" roles. Download requisites in
+the JSON format and put them to `.docker-compose/credentials.json` file.
 
-Create a new S3 bucket to store snapshots for groups and their members
+You can later change roles in the [IAM](https://console.cloud.google.com/iam-admin/iam) tab.
 
 Run a local Postgres server, you can start it using docker-compose.yml with 
 
@@ -29,7 +30,7 @@ Run the app. Docker endpoint takes care of everything, from database migration,
 to creating superuser, to collecting or updating static.
 
 ```bash
-docker-compose up --build app
+docker-compose up --build web
 ```
 
 Obtain access and refresh token from the meetup.com by visiting the
@@ -41,7 +42,7 @@ Enter the Docker container to perform firtthe
 Import meetup categories from the API
 
 ```bash
-docker-compose exec app ./manage.py sync_categories
+docker-compose exec web ./manage.py sync_categories
 ```
 
 Go to project admin console to create locations you want to keep track of.
@@ -64,13 +65,13 @@ Alternatively, you can load sample locations and group filters for all tech
 events in Portugal with
 
 ```bash
-docker-compose exec app ./manage.py loaddata locations_portugal
+docker-compose exec web ./manage.py loaddata locations_portugal
 ```
 
 Get back to the console to load the list of groups.
 
 ```bash
-docker-compose exec app ./manage.py sync_groups
+docker-compose exec web ./manage.py sync_groups
 ```
 
 You should be able to see the list of your groups in
@@ -80,7 +81,7 @@ S3 bucket.
 Then sync group members. It will take a while
 
 ```bash
-docker-compose exec app ./manage.py sync_group_members
+docker-compose exec web ./manage.py sync_group_members
 ```
 
 ## Updating the project
@@ -88,13 +89,13 @@ docker-compose exec app ./manage.py sync_group_members
 Run periodically (once a day)
 
 ```bash
-docker-compose exec app ./manage.py sync_groups
+docker-compose exec web ./manage.py sync_groups
 ```
 
 Run periodically (once in 1-2 hours)
 
 ```bash
-docker-compose exec app ./manage.py sync_group_members
+docker-compose exec web ./manage.py sync_group_members
 ```
 
 Group members updated every 24 hours.

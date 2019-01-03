@@ -1,12 +1,16 @@
 version: "2.1"
 services:
-  app:
+  web:
     image: imankulov/community-insights:latest
     build: .
     env_file: ./.env
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /credentials/credentials.json
     ports:
       - "127.0.0.1:8000:8000"
     restart: on-failure
+    volumes:
+      - "./.docker-compose/credentials.json:/credentials/credentials.json:ro"
   postgres:
     image: "postgres:9.6-alpine"
     ports:
