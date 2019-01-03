@@ -2,7 +2,7 @@
 
 Community insights from meetup.com
 
-## Project initialization
+## Project initialization (locally)
 
 Create a new API client on meetup.com. The starting point for creating
 a client is https://secure.meetup.com/meetup_api/oauth_consumers/.
@@ -16,37 +16,32 @@ for details.
 
 Create a new S3 bucket to store snapshots for groups and their members
 
-Run a local MySQL server, you can start it using docker-compose.yml with 
+Run a local Postgres server, you can start it using docker-compose.yml with 
 
 ```bash
-docker-compose up
+docker-compose up -d postgres
 ```
  
 Copy `env.sample` to `.env` and adjust it accordingly, but setting the name for
 S3 bucket, meetup API client credentials and database URL if needed
 
-Migrate the database and create a new superuser
+Run the app. Docker endpoint takes care of everything, from database migration,
+to creating superuser, to collecting or updating static.
 
 ```bash
-./manage.py create_db
-./manage.py migrate
-./manage.py createsuperuser
-```
-
-Run the web server
-
-```bash
-./manage.py runserver
+docker-compose up --build app
 ```
 
 Obtain access and refresh token from the meetup.com by visiting the
 page http://127.0.0.1:8000/meetup/start/. The final message
 "meetup.com credentials stored" means that everything went successfully.
 
+Enter the Docker container to perform firtthe
+
 Import meetup categories from the API
 
 ```bash
-./manage.py sync_categories
+docker-compose exec app ./manage.py sync_categories
 ```
 
 Go to project admin console to create locations you want to keep track of.
@@ -69,13 +64,13 @@ Alternatively, you can load sample locations and group filters for all tech
 events in Portugal with
 
 ```bash
-./manage.py loaddata locations_portugal
+docker-compose exec app ./manage.py loaddata locations_portugal
 ```
 
 Get back to the console to load the list of groups.
 
 ```bash
-./manage.py sync_groups
+docker-compose exec app ./manage.py sync_groups
 ```
 
 You should be able to see the list of your groups in
@@ -85,7 +80,7 @@ S3 bucket.
 Then sync group members. It will take a while
 
 ```bash
-./manage.py sync_group_members
+docker-compose exec app ./manage.py sync_group_members
 ```
 
 ## Updating the project
@@ -93,13 +88,13 @@ Then sync group members. It will take a while
 Run periodically (once a day)
 
 ```bash
-./manage.py sync_groups
+docker-compose exec app ./manage.py sync_groups
 ```
 
 Run periodically (once in 1-2 hours)
 
 ```bash
-./manage.py sync_group_members
+docker-compose exec app ./manage.py sync_group_members
 ```
 
 Group members updated every 24 hours.

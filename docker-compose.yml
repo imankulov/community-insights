@@ -1,10 +1,19 @@
 version: "2.1"
 services:
-  mysql:
-    image: "mysql:5.6"
+  app:
+    image: imankulov/community-insights:latest
+    build: .
+    env_file: ./.env
     ports:
-      - "127.0.0.1:3306:3306"
+      - "127.0.0.1:8000:8000"
+    restart: on-failure
+  postgres:
+    image: "postgres:9.6-alpine"
+    ports:
+      - "127.0.0.1:5432:5432"
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+      POSTGRES_USER: insights
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: insights
     volumes:
-      - dockerenv/mysql/data:/var/lib/mysql:delegated
+      - ./.docker-compose/postgres/data:/var/lib/postgresql/data

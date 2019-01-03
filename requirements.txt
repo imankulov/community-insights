@@ -4,41 +4,32 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
-argcomplete==1.9.3        # via zappa
+appnope==0.1.0            # via ipython
 attrs==18.2.0
-boto3==1.9.71
-botocore==1.12.71         # via boto3, s3transfer, zappa
+backcall==0.1.0           # via ipython
 certifi==2018.11.29       # via requests
-cfn-flip==1.1.0.post1     # via troposphere
 chardet==3.0.4            # via requests
-click==7.0                # via cfn-flip, kappa
+decorator==4.3.0          # via ipython, traitlets
 django-environ==0.4.5
 django==2.1.4
-docutils==0.14            # via botocore, zappa
 dpath==1.4.2
-durationpy==0.5           # via zappa
-future==0.16.0            # via zappa
-hjson==3.0.1              # via zappa
+gunicorn==19.9.0
 idna==2.8                 # via requests
-jmespath==0.9.3           # via boto3, botocore, zappa
-kappa==0.6.0              # via zappa
-lambda-packages==0.20.0   # via zappa
-mysqlclient==1.3.14
-placebo==0.8.2            # via kappa
-python-dateutil==2.6.1    # via botocore, zappa
-python-slugify==1.2.4     # via zappa
+ipython-genutils==0.2.0   # via traitlets
+ipython==7.2.0
+jedi==0.13.2              # via ipython
+parso==0.3.1              # via jedi
+pexpect==4.6.0            # via ipython
+pickleshare==0.7.5        # via ipython
+prompt-toolkit==2.0.7     # via ipython
+psycopg2-binary==2.7.6.1
+ptyprocess==0.6.0         # via pexpect
+pygments==2.3.1           # via ipython
 pytz==2018.7              # via django
-pyyaml==3.13              # via cfn-flip, kappa, zappa
 requests==2.21.0
-s3transfer==0.1.13        # via boto3
-six==1.12.0               # via cfn-flip, python-dateutil, zappa
-toml==0.10.0              # via zappa
+six==1.12.0               # via prompt-toolkit, traitlets
 tqdm==4.19.1
-troposphere==2.3.4        # via zappa
-unidecode==1.0.23         # via python-slugify
-urllib3==1.24.1           # via botocore, requests
-werkzeug==0.14.1          # via zappa
-wheel==0.32.3             # via zappa
+traitlets==4.3.2          # via ipython
+urllib3==1.24.1           # via requests
+wcwidth==0.1.7            # via prompt-toolkit
 whitenoise==4.1.2
-wsgi-request-logger==0.4.6  # via zappa
-zappa==0.47.1

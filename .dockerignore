@@ -2,6 +2,8 @@ venv
 .idea
 .ipynb_checkpoints
 .env
+.dockerignore
+.gitignore
 __pycache__
-.docker-compose/postgres/data
-staticfiles
+.git
+.docker-compose

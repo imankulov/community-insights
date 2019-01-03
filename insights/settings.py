@@ -3,7 +3,9 @@ import pathlib
 
 BASE_DIR = pathlib.Path(__file__).absolute().parent.parent
 env = environ.Env(DEBUG=(bool, False))
-environ.Env.read_env(str(BASE_DIR / '.env'))
+
+if (BASE_DIR / '.env').exists():
+    environ.Env.read_env(str(BASE_DIR / '.env'))
 
 DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
@@ -53,9 +55,6 @@ TEMPLATES = [
 WSGI_APPLICATION = 'insights.wsgi.application'
 DATABASES = {
     'default': env.db(),
-}
-DATABASES['default']['OPTIONS'] = {
-    'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
 }
 
 AUTH_PASSWORD_VALIDATORS = [
