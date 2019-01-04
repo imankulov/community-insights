@@ -93,9 +93,6 @@ MEETUP_OAUTH_CLIENT_ID = env('MEETUP_OAUTH_CLIENT_ID')
 MEETUP_OAUTH_CLIENT_SECRET = env('MEETUP_OAUTH_CLIENT_SECRET')
 
 # -----------------------------------------------------------------------------
-# S3 settings
-# -----------------------------------------------------------------------------
-S3_BUCKET = env('S3_BUCKET')
 
 # -----------------------------------------------------------------------------
 # Settings to create superuser
@@ -103,3 +100,8 @@ S3_BUCKET = env('S3_BUCKET')
 ADMIN_USERNAME = env('ADMIN_USERNAME')
 ADMIN_EMAIL = env('ADMIN_EMAIL')
 ADMIN_PASSWORD = env('ADMIN_PASSWORD')
+
+# -----------------------------------------------------------------------------
+# Google Cloud settings
+# -----------------------------------------------------------------------------
+BIGQUERY_DATASET_ID = env('BIGQUERY_DATASET_ID')

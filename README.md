@@ -2,6 +2,25 @@
 
 Community insights from meetup.com
 
+## Project initialization (Google Cloud part)
+
+The project relies quite heavily on Google Cloud infrastructure. Namely, it uses
+BigQuery to store historical data, and is supposed to be deployed to production
+with CloudSQL (managed Postgres instance) and Google Kubernetes Engine.
+
+Create a new Google Cloud service account from the
+[Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts/create) tab
+with the "BigQuery Admin" and "Cloud SQL Admin" roles. Download requisites in
+the JSON format and put them to `.docker-compose/credentials.json` file.
+
+You can later change roles in the
+[IAM](https://console.cloud.google.com/iam-admin/iam) tab.
+
+Create a new empty dataset in the [bigquery console](https://console.cloud.google.com/bigquery).
+Its id has to be set later in the `.env` file as the name of the dataset to use
+to the `BIGQUERY_DATASET_ID` variable.
+
+
 ## Project initialization (locally)
 
 Create a new API client on meetup.com. The starting point for creating
@@ -10,12 +29,6 @@ a client is https://secure.meetup.com/meetup_api/oauth_consumers/.
 Use "http://127.0.0.1:8000/meetup/start/" is the value for the "Website"
 parameter and "http://127.0.0.1:8000/meetup/callback/" for "Redirect URI".
 
-Create a new Google Cloud service account from the
-[Service accounts](https://console.cloud.google.com/iam-admin/serviceaccounts/create) tab
-with the "BigQuery Admin" and "Cloud SQL Admin" roles. Download requisites in
-the JSON format and put them to `.docker-compose/credentials.json` file.
-
-You can later change roles in the [IAM](https://console.cloud.google.com/iam-admin/iam) tab.
 
 Run a local Postgres server, you can start it using docker-compose.yml with 
 
