@@ -1,6 +1,8 @@
+import datetime
+
 import attr
 
-from meetup.api_utils import dpath_get, dpath_get_datetime
+from meetup.api_utils import dpath_get, dpath_get_datetime, dpath_get_int
 
 
 @attr.s
@@ -54,7 +56,7 @@ class APIGroup(APIObject):
     next_event_name = attr.ib(
         metadata={'dict_getter': dpath_get('/next_event/name')})
     next_event_yes_rsvp_count = attr.ib(
-        metadata={'dict_getter': dpath_get('/next_event/yes_rsvp_count')})
+        metadata={'dict_getter': dpath_get_int('/next_event/yes_rsvp_count')})
     next_event_time = attr.ib(
         metadata={'dict_getter': dpath_get_datetime('/next_event/time')})
     category_id = attr.ib(metadata={'dict_getter': dpath_get('/category/id')})
@@ -64,6 +66,7 @@ class APIGroup(APIObject):
         metadata={'dict_getter': dpath_get('/meta_category/id')})
     meta_category_shortname = attr.ib(
         metadata={'dict_getter': dpath_get('/meta_category/shortname')})
+    date = attr.ib(factory=datetime.date.today)
 
 
 @attr.s
@@ -99,3 +102,4 @@ class APIGroupMember(APIObject):
         metadata={'dict_getter': dpath_get('/privacy/groups')})
     privacy_topics = attr.ib(
         metadata={'dict_getter': dpath_get('/privacy/topics')})
+    date = attr.ib(factory=datetime.date.today)

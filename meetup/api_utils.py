@@ -15,7 +15,21 @@ def dpath_get(glob):
         try:
             return dpath.get(obj, glob)
         except KeyError:
-            return field.default
+            return get_default(field)
+
+    return func
+
+
+def dpath_get_int(glob):
+    """
+    Getter which returns one integer value by dpath glob
+    """
+
+    def func(obj: dict, field: attr.Attribute):
+        try:
+            return int(dpath.get(obj, glob))
+        except (KeyError, TypeError, ValueError):
+            return get_default(field)
 
     return func
 
@@ -29,11 +43,19 @@ def dpath_get_datetime(glob):
         try:
             value = dpath.get(obj, glob)
         except KeyError:
-            return field.default
+            return get_default(field)
         return ts(value)
 
     return func
 
+
+def get_default(field):
+    default = field.default
+    if hasattr(default, 'factory'):
+        default = default.factory()
+    if default is attr.NOTHING:
+        default = None
+    return default
 
 def dpath_values(glob):
     """

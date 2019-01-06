@@ -1,13 +1,11 @@
 import datetime
 import logging
 
-import boto3
 import tqdm
-from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db.transaction import atomic
 
-from insights.utils import json_records_gz
+from insights.utils import bigquery_upload, get_job_id
 from meetup import api_client
 from meetup.models import MeetupGroupFilter, MeetupGroup
 
@@ -39,9 +37,8 @@ class Command(BaseCommand):
         for group in groups_dict.values():
             MeetupGroup.from_api(group)
 
-        # store data to S3
+        # store data to bigquery
         now = datetime.datetime.utcnow()
-        fileobj = json_records_gz(groups_dict.values())
-        s3_key = f'groups/date={now:%F}/{now:%Y%m%d%H%M%S}.json.gz'
-        client = boto3.client('s3')
-        client.upload_fileobj(fileobj, settings.S3_BUCKET, s3_key)
+        job_id = get_job_id(f'sync_groups_{now:%Y%m%d}')
+        bigquery_upload(
+            groups_dict.values(), 'groups', job_id=job_id, async=False)

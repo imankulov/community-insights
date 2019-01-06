@@ -2,15 +2,15 @@ import datetime
 import logging
 import random
 import time
+import warnings
 
-import boto3
+import pytz
 import tqdm
-from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.db.transaction import atomic
-from django.utils import timezone
+from google.cloud.exceptions import Conflict
 
-from insights.utils import json_records_gz
+from insights.utils import get_job_id, bigquery_upload
 from meetup import api_client
 from meetup.models import MeetupGroup, MeetupGroupMember
 
@@ -36,18 +36,22 @@ class Command(BaseCommand):
         for person in members:
             MeetupGroupMember.from_api(group, person)
 
-        # store records into fileobj as set of JSON-encoded newline-separated
-        fileobj = json_records_gz(members)
+        # store data to bigquery
+        try:
+            now = datetime.datetime.utcnow()
+            job_id = get_job_id(f'sync_members_{group.urlname}_{now:%Y%m%d}')
+            bigquery_upload(members, 'members', job_id=job_id, async=False)
+        except Conflict as e:
+            warnings.warn(str(e))
 
-        # put that object to S3
-        now = timezone.now()
-        s3_key = f'members/group={group.urlname}/date={now:%F}/{group.urlname}_{now:%Y%m%d%H%M%S}.json.gz'
-        client = boto3.client('s3')
-        client.upload_fileobj(fileobj, settings.S3_BUCKET, s3_key)
-
-        # schedule next update in about 24 hours
-        minutes_diff = random.normalvariate(24 * 60, 2 * 60)
-        group.members_next_update = now + datetime.timedelta(
-            minutes=minutes_diff)
+        # schedule next update tomorrow at random time
+        group.members_next_update = get_random_tomorrow()
         group.save()
         time.sleep(1)
+
+
+def get_random_tomorrow():
+    tom = datetime.date.today() + datetime.timedelta(days=1)
+    dt = datetime.datetime(tom.year, tom.month, tom.day)
+    dt += datetime.timedelta(minutes=random.randint(60, 23 * 60))
+    return pytz.utc.localize(dt)
