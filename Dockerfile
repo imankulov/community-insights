@@ -1,5 +1,4 @@
-FROM python:3.6
-ENV PYTHONUNBUFFERED 1
+FROM python:3.6-alpine
 RUN mkdir /community-insights
 WORKDIR /community-insights
 COPY ./requirements.txt /community-insights/
