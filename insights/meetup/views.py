@@ -3,7 +3,7 @@ from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
-from meetup.models import APICredentials
+from insights.meetup.models import APICredentials
 
 
 def start(request):

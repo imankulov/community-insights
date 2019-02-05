@@ -1,5 +1,5 @@
 from django.urls import path
-from meetup import views
+from insights.meetup import views
 
 urlpatterns = [
     path('start/', views.start, name='meetup-start'),

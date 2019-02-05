@@ -6,8 +6,8 @@ from django.core.management.base import BaseCommand
 from django.db.transaction import atomic
 
 from insights.utils import bigquery_upload, get_job_id
-from meetup import api_client
-from meetup.models import MeetupGroupFilter, MeetupGroup
+from insights.meetup import api_client
+from insights.meetup.models import MeetupGroupFilter, MeetupGroup
 
 logger = logging.getLogger(__name__)
 

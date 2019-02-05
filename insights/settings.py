@@ -22,8 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'core',
-    'meetup',
+    'insights.core',
+    'insights.meetup',
 ]
 
 MIDDLEWARE = [

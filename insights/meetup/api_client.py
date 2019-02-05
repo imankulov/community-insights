@@ -10,8 +10,8 @@ from urllib.parse import urlencode
 import requests
 from requests.utils import parse_header_links
 
-from meetup.api_models import APIGroupMember, APIGroup, APICategory
-from meetup.models import APICredentials
+from insights.meetup.api_models import APIGroupMember, APIGroup, APICategory
+from insights.meetup.models import APICredentials
 
 DEFAULT_PAGE_SIZE = 2000
 

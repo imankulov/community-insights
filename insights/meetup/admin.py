@@ -1,5 +1,5 @@
 from django.contrib import admin
-from meetup import models
+from insights.meetup import models
 
 admin.site.register(models.APICredentials)
 admin.site.register(models.MeetupCategory)

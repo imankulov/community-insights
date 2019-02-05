@@ -3,8 +3,8 @@ import logging
 from django.core.management.base import BaseCommand
 from django.db.transaction import atomic
 
-from meetup import api_client
-from meetup.models import MeetupCategory
+from insights.meetup import api_client
+from insights.meetup.models import MeetupCategory
 
 logger = logging.getLogger(__name__)
 

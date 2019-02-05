@@ -10,8 +10,8 @@ from django.core.management.base import BaseCommand
 from django.db.transaction import atomic
 from google.cloud.exceptions import Conflict
 from insights.utils import bigquery_upload, get_job_id
-from meetup import api_client
-from meetup.models import MeetupGroup, MeetupGroupMember
+from insights.meetup import api_client
+from insights.meetup.models import MeetupGroup, MeetupGroupMember
 
 logger = logging.getLogger(__name__)
 

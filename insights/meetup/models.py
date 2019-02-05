@@ -8,7 +8,7 @@ from django.conf import settings
 from django.utils import timezone
 from django.db import models, transaction
 
-from meetup.api_models import APICategory, APIGroup, APIGroupMember
+from insights.meetup.api_models import APICategory, APIGroup, APIGroupMember
 
 API_CREDENTIALS_DATABASE_ID = 1
 YEAR2000 = pytz.utc.localize(datetime.datetime(2000, 1, 1))

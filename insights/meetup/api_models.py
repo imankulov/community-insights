@@ -2,7 +2,7 @@ import datetime
 
 import attr
 
-from meetup.api_utils import dpath_get, dpath_get_datetime, dpath_get_int
+from insights.meetup.api_utils import dpath_get, dpath_get_datetime, dpath_get_int
 
 
 @attr.s

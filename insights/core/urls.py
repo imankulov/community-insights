@@ -1,5 +1,5 @@
 from django.urls import path
-from core import views
+from insights.core import views
 
 urlpatterns = [
     path('', views.index, name='core-index'),
