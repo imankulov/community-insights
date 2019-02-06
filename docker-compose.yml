@@ -12,13 +12,21 @@ services:
       - "./.docker-compose/credentials.json:/credentials/credentials.json:ro"
       # development mapping
       - ".:/community-insights/"
+
+  redis:
+      image: redis:alpine
+      volumes:
+        - ./.docker-compose/redis/data:/data
+      ports:
+        - "127.0.0.1:6379:6379"
+
   postgres:
     image: "postgres:9.6-alpine"
-    ports:
-      - "127.0.0.1:5432:5432"
     environment:
       POSTGRES_USER: insights
       POSTGRES_PASSWORD: password
       POSTGRES_DB: insights
     volumes:
       - ./.docker-compose/postgres/data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"

@@ -4,14 +4,20 @@
 #
 #    pip-compile --output-file requirements.txt requirements.in
 #
+amqp==2.4.1               # via kombu
 appnope==0.1.0            # via ipython
 attrs==18.2.0
 backcall==0.1.0           # via ipython
+billiard==3.5.0.5         # via celery
 cachetools==3.0.0         # via google-auth
+celery[redis]==4.2.1
 certifi==2018.11.29       # via requests
 chardet==3.0.4            # via requests
 decorator==4.3.0          # via ipython, traitlets
+django-celery-beat==1.4.0
+django-celery-results==1.0.4
 django-environ==0.4.5
+django-timezone-field==3.0  # via django-celery-beat
 django==2.1.4
 dpath==1.4.2
 google-api-core==1.7.0    # via google-cloud-bigquery, google-cloud-core, google-cloud-storage
@@ -26,6 +32,7 @@ idna==2.8                 # via requests
 ipython-genutils==0.2.0   # via traitlets
 ipython==7.2.0
 jedi==0.13.2              # via ipython
+kombu==4.2.2.post1        # via celery
 parso==0.3.1              # via jedi
 pexpect==4.6.0            # via ipython
 pickleshare==0.7.5        # via ipython
@@ -36,12 +43,16 @@ ptyprocess==0.6.0         # via pexpect
 pyasn1-modules==0.2.3     # via google-auth
 pyasn1==0.4.5             # via pyasn1-modules, rsa
 pygments==2.3.1           # via ipython
-pytz==2018.7              # via django, google-api-core
+python-crontab==2.3.6     # via django-celery-beat
+python-dateutil==2.7.5    # via python-crontab
+pytz==2018.7              # via celery, django, django-timezone-field, google-api-core
+redis==3.1.0              # via celery
 requests==2.21.0
 rsa==4.0                  # via google-auth
-six==1.12.0               # via google-api-core, google-auth, google-resumable-media, prompt-toolkit, protobuf, traitlets
+six==1.12.0               # via google-api-core, google-auth, google-resumable-media, prompt-toolkit, protobuf, python-dateutil, traitlets
 tqdm==4.19.1
 traitlets==4.3.2          # via ipython
 urllib3==1.24.1           # via requests
+vine==1.2.0               # via amqp
 wcwidth==0.1.7            # via prompt-toolkit
 whitenoise==4.1.2

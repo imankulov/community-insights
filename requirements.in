@@ -11,6 +11,9 @@ ipython
 #matplotlib
 tqdm
 whitenoise
+celery[redis]
+django-celery-results
+django-celery-beat
 
 # Google Cloud libraries
 google-cloud-storage

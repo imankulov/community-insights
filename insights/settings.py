@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_celery_results',
+    'django_celery_beat',
     'insights.core',
     'insights.meetup',
 ]
@@ -87,6 +89,16 @@ USE_TZ = True
 
 STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 STATIC_URL = '/static/'
+
+# -----------------------------------------------------------------------------
+# Celery settings
+# -----------------------------------------------------------------------------
+CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='foo')
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_BEAT_SCHEDULE = {}
 
 # -----------------------------------------------------------------------------
 # meetup.com settings
