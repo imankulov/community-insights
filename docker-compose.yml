@@ -1,25 +1,36 @@
 version: "2.1"
 services:
-  web:
+  console: &insights-console
     image: imankulov/community-insights:latest
     build: .
-    env_file: ./.env
-    ports:
-      - "127.0.0.1:8000:8000"
+    env_file: .env
     restart: on-failure
+    depends_on:
+      - postgres
+      - redis
     volumes:
       # requisites for Google Cloud
       - "./.docker-compose/credentials.json:/credentials/credentials.json:ro"
       # development mapping
       - ".:/community-insights/"
-
+    command: ["sleep"]
+  web:
+    <<: *insights-console
+    ports:
+      - "127.0.0.1:8000:8000"
+    command: ["web"]
+  worker:
+    <<: *insights-console
+    command: ["worker"]
+  cron:
+    <<: *insights-console
+    command: ["cron"]
   redis:
       image: redis:alpine
       volumes:
         - ./.docker-compose/redis/data:/data
       ports:
         - "127.0.0.1:6379:6379"
-
   postgres:
     image: "postgres:9.6-alpine"
     environment:
