@@ -93,7 +93,7 @@ STATIC_URL = '/static/'
 # -----------------------------------------------------------------------------
 # Celery settings
 # -----------------------------------------------------------------------------
-CELERY_BROKER_URL = env('CELERY_BROKER_URL', default='foo')
+CELERY_BROKER_URL = env('CELERY_BROKER_URL')
 CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
