@@ -1,19 +1,28 @@
 version: "2.1"
+x-insights-console: &insights-console
+  image: imankulov/community-insights:latest
+  build: .
+  env_file: .env
+  restart: on-failure
+  depends_on:
+    - postgres
+    - redis
+  volumes:
+    # requisites for Google Cloud
+    - "./.docker-compose/credentials.json:/credentials/credentials.json:ro"
+    # development mapping
+    - ".:/community-insights/"
+  command: ["sleep"]
 services:
-  console: &insights-console
-    image: imankulov/community-insights:latest
-    build: .
-    env_file: .env
-    restart: on-failure
-    depends_on:
-      - postgres
-      - redis
+  nginx:
+    image: nginx:alpine
     volumes:
-      # requisites for Google Cloud
-      - "./.docker-compose/credentials.json:/credentials/credentials.json:ro"
-      # development mapping
-      - ".:/community-insights/"
-    command: ["sleep"]
+      - ./.docker-compose/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./.docker-compose/nginx/logs/:/var/log/nginx
+    ports:
+      # if you want to expose nginx to your external IP address, run this as
+      # NGINX_EXPOSE=0.0.0.0 docker-compose up nginx
+      - ${NGINX_EXPOSE:-127.0.0.1}:80:80
   web:
     <<: *insights-console
     ports:

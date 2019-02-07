@@ -5,4 +5,5 @@ venv
 __pycache__
 .docker-compose/postgres/data
 .docker-compose/credentials.json
+.docker-compose/nginx/logs
 staticfiles
