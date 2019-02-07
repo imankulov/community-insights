@@ -11,6 +11,7 @@ from insights.meetup import api_client
 from insights.meetup.models import (MeetupCategory, MeetupGroup,
                                     MeetupGroupFilter, MeetupGroupMember)
 from insights.utils import bigquery_upload, get_job_id
+from requests import HTTPError
 
 
 @shared_task
@@ -54,7 +55,12 @@ def sync_group_members():
 @atomic
 def sync_group(group: MeetupGroup):
     # get the list of all group members
-    members = list(api_client.group_members(group.urlname))
+    try:
+        members = list(api_client.group_members(group.urlname))
+    except HTTPError as e:
+        warnings.warn(f"Unable to sync the group {group.name}: {e}")
+        return
+
     for person in members:
         MeetupGroupMember.from_api(group, person)
 
