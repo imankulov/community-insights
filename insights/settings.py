@@ -1,6 +1,8 @@
 import environ
 import pathlib
 
+from celery.schedules import crontab
+
 BASE_DIR = pathlib.Path(__file__).absolute().parent.parent
 env = environ.Env(DEBUG=(bool, False))
 
@@ -98,7 +100,18 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
-CELERY_BEAT_SCHEDULE = {}
+CELERY_BEAT_SCHEDULE = {
+    'sync_group_members': {
+        'task': 'insights.meetup.tasks.sync_group_members',
+        # 12 minutes every other hour
+        'schedule': crontab(minute='12', hour='*/2'),
+    },
+    'sync_groups': {
+        'task': 'insights.meetup.tasks.sync_groups',
+        # # 4:28 AM every day
+        'schedule': crontab(minute=28, hour=4),
+    },
+}
 
 # -----------------------------------------------------------------------------
 # meetup.com settings
