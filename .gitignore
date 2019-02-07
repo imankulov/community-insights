@@ -3,6 +3,7 @@ venv
 .ipynb_checkpoints
 .env
 __pycache__
+.docker-compose/redis/data
 .docker-compose/postgres/data
 .docker-compose/credentials.json
 .docker-compose/nginx/logs
