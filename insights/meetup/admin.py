@@ -9,7 +9,13 @@ admin.site.register(models.MeetupGroupFilter)
 
 @admin.register(models.MeetupGroup)
 class MeetupGroupAdmin(admin.ModelAdmin):
-    list_display = ('name', 'city', 'created_date', 'members')
+    list_display = (
+        'name',
+        'city',
+        'created_date',
+        'members',
+        'members_next_update',
+    )
     list_filter = ('city', 'created')
     search_fields = ['name', 'description']
 
@@ -24,7 +30,6 @@ class MeetupUserAdmin(admin.ModelAdmin):
     list_display = ('name', 'city', 'country', 'joined')
     list_filter = ('joined', 'country', 'city')
     search_fields = ['name']
-
 
 
 @admin.register(models.MeetupGroupMember)
